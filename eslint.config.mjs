@@ -1,13 +1,21 @@
 import nextPlugin from "@next/eslint-plugin-next";
+import { defineConfig, globalIgnores } from "eslint/config";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import unusedImports from "eslint-plugin-unused-imports";
-import rootConfig from "../../eslint.config.mjs";
+import tseslint from "typescript-eslint";
 
-export default [
-  ...rootConfig,
+export default defineConfig([
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "node_modules/**",
+    "next-env.d.ts",
+  ]),
   {
     files: ["**/*.{ts,tsx,js,jsx}"],
+    extends: [tseslint.configs.recommended],
     plugins: {
       "@next/next": nextPlugin,
       react: reactPlugin,
@@ -22,7 +30,6 @@ export default [
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
       "react/no-unescaped-entities": "off",
-      "react-hooks/react-compiler": "error",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
@@ -60,4 +67,4 @@ export default [
       react: { version: "detect" },
     },
   },
-];
+]);
