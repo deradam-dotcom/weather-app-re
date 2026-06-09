@@ -60,7 +60,7 @@ export const fetchGeocoding = async (
   url.searchParams.set("language", "hu");
   url.searchParams.set("format", "json");
 
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 86400 } });
   if (!response.ok) {
     throw new Error(`Geocoding request failed with status ${response.status}`);
   }
@@ -92,7 +92,7 @@ export const fetchForecast = async (
     "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
   );
 
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 600 } });
   if (!response.ok) {
     throw new Error(`Forecast request failed with status ${response.status}`);
   }

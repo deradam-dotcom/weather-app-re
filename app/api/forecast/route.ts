@@ -1,13 +1,6 @@
-import { cacheLife } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { fetchForecast } from "@/lib/open-meteo";
-
-async function getCachedForecast(latitude: number, longitude: number) {
-  "use cache";
-  cacheLife("minutes");
-  return fetchForecast(latitude, longitude);
-}
 
 export const GET = async (request: NextRequest) => {
   const { searchParams } = request.nextUrl;
@@ -28,7 +21,7 @@ export const GET = async (request: NextRequest) => {
   }
 
   try {
-    const forecast = await getCachedForecast(latitude, longitude);
+    const forecast = await fetchForecast(latitude, longitude);
     return NextResponse.json(forecast);
   } catch {
     return NextResponse.json(

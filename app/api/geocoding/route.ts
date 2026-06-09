@@ -1,13 +1,6 @@
-import { cacheLife } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { fetchGeocoding } from "@/lib/open-meteo";
-
-async function getCachedGeocoding(name: string) {
-  "use cache";
-  cacheLife("hours");
-  return fetchGeocoding(name);
-}
 
 export const GET = async (request: NextRequest) => {
   const name = request.nextUrl.searchParams.get("name")?.trim() ?? "";
@@ -17,7 +10,7 @@ export const GET = async (request: NextRequest) => {
   }
 
   try {
-    const results = await getCachedGeocoding(name);
+    const results = await fetchGeocoding(name);
     return NextResponse.json({ results });
   } catch {
     return NextResponse.json(
