@@ -56,7 +56,7 @@ export const fetchGeocoding = async (
 ): Promise<GeocodingResult[]> => {
   const url = new URL(GEOCODING_URL);
   url.searchParams.set("name", name);
-  url.searchParams.set("count", "5");
+  url.searchParams.set("count", "100");
   url.searchParams.set("language", "hu");
   url.searchParams.set("format", "json");
 

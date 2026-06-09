@@ -54,6 +54,7 @@ export const CitySearchDialog = () => {
   return (
     <Dialog open={isSearchOpen} onOpenChange={handleOpenChange}>
       <DialogContent
+        className="sm:max-w-lg"
         showCloseButton={isDismissable}
         onEscapeKeyDown={(event) => {
           if (!isDismissable) {
@@ -80,7 +81,7 @@ export const CitySearchDialog = () => {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Pl. Budapest"
-            className="h-12 pl-10 text-base md:text-base focus-visible:border-blue-500 focus-visible:ring-1 focus-visible:ring-blue-500"
+            className="h-12 pl-10 text-base md:text-base focus-visible:border-blue-300 focus-visible:ring-1 focus-visible:ring-blue-300"
           />
         </div>
 

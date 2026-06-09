@@ -20,7 +20,7 @@ export const CitySearchResults = ({
   showNoResults,
   onSelect,
 }: CitySearchResultsProps) => (
-  <div className="min-h-10">
+  <div className="min-h-10 min-w-0">
     {isLoading && (
       <p className="flex items-center gap-2 text-base text-muted-foreground">
         <Loader2 className="size-[18px] animate-spin" />
@@ -36,18 +36,18 @@ export const CitySearchResults = ({
       <p className="text-base text-muted-foreground">Nincs találat.</p>
     )}
     {!isLoading && !error && results.length > 0 && (
-      <ul className="flex flex-col">
+      <ul className="flex max-h-72 flex-col overflow-y-auto">
         {results.map((result) => (
           <li key={result.id}>
             <button
               type="button"
               onClick={() => onSelect(result)}
-              className="flex w-full items-center gap-2 rounded-md px-2 py-2.5 text-left text-base hover:bg-muted"
+              className="flex w-full min-w-0 items-center gap-2 rounded-md px-2 py-2.5 text-left text-base hover:bg-muted"
             >
               <MapPin className="size-[18px] shrink-0 text-muted-foreground" />
-              <span className="font-medium">{result.name}</span>
+              <span className="min-w-0 truncate font-medium">{result.name}</span>
               {formatLocation(result) && (
-                <span className="truncate text-muted-foreground">
+                <span className="min-w-0 truncate text-muted-foreground">
                   {formatLocation(result)}
                 </span>
               )}
