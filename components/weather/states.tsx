@@ -26,7 +26,7 @@ export const ForecastListSkeleton = () => (
 );
 
 export const ChartSkeleton = () => (
-  <Skeleton className="h-44 w-full rounded-[var(--radius-card)] bg-white/15 md:h-64" />
+  <Skeleton className="h-[177px] w-[314px] rounded-[var(--radius-card)] bg-white/15 md:h-[338px] md:w-[578px]" />
 );
 
 type WeatherErrorProps = {
