@@ -11,7 +11,7 @@ export const CurrentConditionsSkeleton = () => (
 );
 
 export const ForecastListSkeleton = () => (
-  <section>
+  <section className="w-[314px] md:w-[578px]">
     <Skeleton className="h-4 w-32 bg-white/20" />
     <ul className="mt-4 flex flex-col gap-3">
       {SKELETON_ROWS.map((id) => (
