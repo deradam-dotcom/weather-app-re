@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import type { GeocodingResult } from "@/lib/open-meteo";
 
 const DEBOUNCE_MS = 300;
@@ -14,16 +15,16 @@ type UseCitySearchResult = {
 };
 
 export const useCitySearch = (query: string): UseCitySearchResult => {
+  const debouncedQuery = useDebouncedValue(query.trim(), DEBOUNCE_MS);
   const [results, setResults] = useState<GeocodingResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
-    const trimmed = query.trim();
 
-    const timer = setTimeout(async () => {
-      if (trimmed.length < MIN_QUERY_LENGTH) {
+    const run = async () => {
+      if (debouncedQuery.length < MIN_QUERY_LENGTH) {
         setResults([]);
         setError(false);
         setIsLoading(false);
@@ -33,7 +34,7 @@ export const useCitySearch = (query: string): UseCitySearchResult => {
       setIsLoading(true);
       setError(false);
       try {
-        const params = new URLSearchParams({ name: trimmed });
+        const params = new URLSearchParams({ name: debouncedQuery });
         const response = await fetch(`/api/geocoding?${params}`, {
           signal: controller.signal,
         });
@@ -51,13 +52,11 @@ export const useCitySearch = (query: string): UseCitySearchResult => {
           setIsLoading(false);
         }
       }
-    }, DEBOUNCE_MS);
-
-    return () => {
-      controller.abort();
-      clearTimeout(timer);
     };
-  }, [query]);
+
+    run();
+    return () => controller.abort();
+  }, [debouncedQuery]);
 
   return { results, isLoading, error };
 };
