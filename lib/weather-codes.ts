@@ -49,6 +49,5 @@ const WEATHER_CODES: Record<number, WeatherInfo> = {
 
 const FALLBACK_WEATHER: WeatherInfo = { label: "Ismeretlen", Icon: Cloud };
 
-export function getWeatherInfo(code: number): WeatherInfo {
-  return WEATHER_CODES[code] ?? FALLBACK_WEATHER;
-}
+export const getWeatherInfo = (code: number): WeatherInfo =>
+  WEATHER_CODES[code] ?? FALLBACK_WEATHER;

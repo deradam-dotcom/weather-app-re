@@ -14,7 +14,7 @@ type ForecastListProps = {
   days: ForecastRowData[];
 };
 
-export function ForecastList({ days }: ForecastListProps) {
+export const ForecastList = ({ days }: ForecastListProps) => {
   return (
     <section>
       <h2 className="text-sm text-fg-muted">7 napos előrejelzés</h2>
@@ -25,4 +25,4 @@ export function ForecastList({ days }: ForecastListProps) {
       </ul>
     </section>
   );
-}
+};

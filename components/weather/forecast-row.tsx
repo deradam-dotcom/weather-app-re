@@ -7,12 +7,12 @@ type ForecastRowProps = {
   temperature: string;
 };
 
-export function ForecastRow({
+export const ForecastRow = ({
   day,
   icon,
   precipitation,
   temperature,
-}: ForecastRowProps) {
+}: ForecastRowProps) => {
   return (
     <li className="flex items-center justify-between gap-2 py-3.5 text-base text-fg">
       <span className="min-w-0 flex-1 truncate">{day}</span>
@@ -25,4 +25,4 @@ export function ForecastRow({
       </span>
     </li>
   );
-}
+};

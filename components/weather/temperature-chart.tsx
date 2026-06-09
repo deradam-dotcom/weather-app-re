@@ -12,7 +12,7 @@ type TemperatureChartProps = {
   data: { label: string; max: number }[];
 };
 
-export function TemperatureChart({ data }: TemperatureChartProps) {
+export const TemperatureChart = ({ data }: TemperatureChartProps) => {
   return (
     <div className="h-44 w-full min-w-0 overflow-hidden rounded-[var(--radius-card)] border border-chart-border p-4 md:h-64">
       <ResponsiveContainer width="100%" height="100%">
@@ -43,4 +43,4 @@ export function TemperatureChart({ data }: TemperatureChartProps) {
       </ResponsiveContainer>
     </div>
   );
-}
+};

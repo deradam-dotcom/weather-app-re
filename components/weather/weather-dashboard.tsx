@@ -27,7 +27,7 @@ const placeholderChart = [
   { label: "7", max: 25 },
 ];
 
-export function WeatherDashboard() {
+export const WeatherDashboard = () => {
   const days = placeholderDays.map((day) => ({
     ...day,
     icon: <CloudRain className="size-5" strokeWidth={1.5} />,
@@ -51,4 +51,4 @@ export function WeatherDashboard() {
       </div>
     </div>
   );
-}
+};

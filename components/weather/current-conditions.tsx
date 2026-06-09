@@ -5,12 +5,12 @@ type CurrentConditionsProps = {
   onCityClick?: () => void;
 };
 
-export function CurrentConditions({
+export const CurrentConditions = ({
   cityName,
   temperature,
   condition,
   onCityClick,
-}: CurrentConditionsProps) {
+}: CurrentConditionsProps) => {
   return (
     <section className="flex flex-col">
       <button
@@ -26,4 +26,4 @@ export function CurrentConditions({
       <p className="mt-2 text-lg text-fg">{condition}</p>
     </section>
   );
-}
+};

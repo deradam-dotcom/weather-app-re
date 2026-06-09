@@ -51,7 +51,9 @@ type RawForecastResponse = {
 const GEOCODING_URL = "https://geocoding-api.open-meteo.com/v1/search";
 const FORECAST_URL = "https://api.open-meteo.com/v1/forecast";
 
-export async function fetchGeocoding(name: string): Promise<GeocodingResult[]> {
+export const fetchGeocoding = async (
+  name: string,
+): Promise<GeocodingResult[]> => {
   const url = new URL(GEOCODING_URL);
   url.searchParams.set("name", name);
   url.searchParams.set("count", "5");
@@ -73,12 +75,12 @@ export async function fetchGeocoding(name: string): Promise<GeocodingResult[]> {
     admin1: result.admin1,
     timezone: result.timezone,
   }));
-}
+};
 
-export async function fetchForecast(
+export const fetchForecast = async (
   latitude: number,
   longitude: number,
-): Promise<ForecastData> {
+): Promise<ForecastData> => {
   const url = new URL(FORECAST_URL);
   url.searchParams.set("latitude", String(latitude));
   url.searchParams.set("longitude", String(longitude));
@@ -110,4 +112,4 @@ export async function fetchForecast(
         data.daily.precipitation_probability_max[index] ?? 0,
     })),
   };
-}
+};

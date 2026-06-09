@@ -7,6 +7,6 @@ export const metadata: Metadata = {
   description: "Aktuális időjárás és 7 napos előrejelzés",
 };
 
-export default function Home() {
-  return <WeatherDashboard />;
-}
+const Home = () => <WeatherDashboard />;
+
+export default Home;

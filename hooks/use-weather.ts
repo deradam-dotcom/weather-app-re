@@ -12,7 +12,7 @@ type UseWeatherResult = {
   refetch: () => void;
 };
 
-export function useWeather(city: City | null): UseWeatherResult {
+export const useWeather = (city: City | null): UseWeatherResult => {
   const [data, setData] = useState<ForecastData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -63,4 +63,4 @@ export function useWeather(city: City | null): UseWeatherResult {
     error: city ? error : false,
     refetch,
   };
-}
+};

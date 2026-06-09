@@ -13,7 +13,7 @@ type UseCitySearchResult = {
   error: boolean;
 };
 
-export function useCitySearch(query: string): UseCitySearchResult {
+export const useCitySearch = (query: string): UseCitySearchResult => {
   const [results, setResults] = useState<GeocodingResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -60,4 +60,4 @@ export function useCitySearch(query: string): UseCitySearchResult {
   }, [query]);
 
   return { results, isLoading, error };
-}
+};
