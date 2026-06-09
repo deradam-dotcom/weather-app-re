@@ -16,14 +16,14 @@ export const CurrentConditions = ({
       <button
         type="button"
         onClick={onCityClick}
-        className="w-fit cursor-pointer text-sm text-fg-muted transition-opacity hover:opacity-80"
+        className="w-fit cursor-pointer text-sm text-fg-muted hover:underline"
       >
         {cityName}
       </button>
-      <p className="mt-1 text-5xl font-light text-fg-strong md:text-6xl">
+      <p className="mt-1 text-[48px] font-light text-fg-strong">
         {temperature} °C
       </p>
-      <p className="mt-2 text-lg text-fg">{condition}</p>
+      <p className="mt-2 text-[16px] text-fg">{condition}</p>
     </section>
   );
 };

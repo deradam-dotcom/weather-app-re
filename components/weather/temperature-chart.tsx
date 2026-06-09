@@ -13,7 +13,7 @@ type TemperatureChartProps = {
 };
 
 export const TemperatureChart = ({ data }: TemperatureChartProps) => (
-  <div className="h-[177px] w-[314px] overflow-hidden rounded-[var(--radius-card)] border border-chart-border p-4 md:h-[338px] md:w-[578px]">
+  <div className="h-[177px] w-[314px] overflow-hidden rounded-[var(--radius-card)] border-2 border-white p-4 md:h-[338px] md:w-[578px]">
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
         <CartesianGrid

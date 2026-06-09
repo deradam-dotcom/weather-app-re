@@ -17,7 +17,7 @@ type ForecastListProps = {
 export const ForecastList = ({ days }: ForecastListProps) => {
   return (
     <section className="w-[314px] md:w-[578px]">
-      <h2 className="text-sm text-fg-muted">7 napos előrejelzés</h2>
+      <h2 className="text-[12px] text-fg-muted">7 napos előrejelzés</h2>
       <ul className="mt-4 flex flex-col">
         {days.map(({ key, ...row }) => (
           <ForecastRow key={key} {...row} />
