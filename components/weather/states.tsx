@@ -3,22 +3,22 @@ import { Skeleton } from "@/components/ui/skeleton";
 const SKELETON_ROWS = ["1", "2", "3", "4", "5", "6", "7"];
 
 export const CurrentConditionsSkeleton = () => (
-  <section className="flex flex-col gap-3">
-    <Skeleton className="h-4 w-24 bg-white/20" />
-    <Skeleton className="h-12 w-36 bg-white/20" />
-    <Skeleton className="h-5 w-28 bg-white/20" />
+  <section className="flex flex-col">
+    <Skeleton className="h-5 w-24 bg-white/20" />
+    <Skeleton className="mt-1 h-14 w-36 bg-white/20" />
+    <Skeleton className="mt-2 h-5 w-28 bg-white/20" />
   </section>
 );
 
 export const ForecastListSkeleton = () => (
   <section className="w-[314px] md:w-[578px]">
     <Skeleton className="h-4 w-32 bg-white/20" />
-    <ul className="mt-4 flex flex-col gap-3">
+    <ul className="mt-4 flex flex-col">
       {SKELETON_ROWS.map((id) => (
-        <li key={id} className="flex items-center justify-between gap-2 py-1">
-          <Skeleton className="h-4 w-16 bg-white/20" />
-          <Skeleton className="h-4 w-14 bg-white/20" />
-          <Skeleton className="h-4 w-24 bg-white/20" />
+        <li key={id} className="flex items-center justify-between gap-2 py-3.5">
+          <Skeleton className="h-6 w-20 bg-white/20" />
+          <Skeleton className="h-6 w-16 bg-white/20" />
+          <Skeleton className="h-6 w-24 bg-white/20" />
         </li>
       ))}
     </ul>
