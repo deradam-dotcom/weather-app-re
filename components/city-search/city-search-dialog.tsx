@@ -68,8 +68,8 @@ export const CitySearchDialog = () => {
         }}
       >
         <DialogHeader>
-          <DialogTitle>Város keresése</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-base">Város keresése</DialogTitle>
+          <DialogDescription className="text-[15px]">
             Keress rá egy városra az időjárás megtekintéséhez.
           </DialogDescription>
         </DialogHeader>

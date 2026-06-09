@@ -1,4 +1,4 @@
-import { Loader2, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 import type { GeocodingResult } from "@/lib/open-meteo";
 
@@ -22,18 +22,27 @@ export const CitySearchResults = ({
 }: CitySearchResultsProps) => (
   <div className="min-h-10 min-w-0">
     {isLoading && (
-      <p className="flex items-center gap-2 text-base text-muted-foreground">
-        <Loader2 className="size-[18px] animate-spin" />
+      <p className="flex items-center justify-center gap-2 text-base text-muted-foreground">
+        <span
+          className="size-[18px] shrink-0 animate-spin rounded-full"
+          style={{
+            background:
+              "conic-gradient(from 0deg, var(--color-sky-from), var(--color-sky-to), var(--color-sky-from))",
+            WebkitMask:
+              "radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px))",
+            mask: "radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px))",
+          }}
+        />
         Keresés...
       </p>
     )}
     {error && (
-      <p className="text-base text-destructive">
+      <p className="text-center text-base text-destructive">
         Nem sikerült lefuttatni a keresést.
       </p>
     )}
     {showNoResults && (
-      <p className="text-base text-muted-foreground">Nincs találat.</p>
+      <p className="text-center text-base text-muted-foreground">Nincs találat.</p>
     )}
     {!isLoading && !error && results.length > 0 && (
       <ul className="flex max-h-72 flex-col overflow-y-auto">
