@@ -7,5 +7,5 @@ pnpm i
 **START**
 
 ```
-pmpm dev
+pnpm dev
 ```
