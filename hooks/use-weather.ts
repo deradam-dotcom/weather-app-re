@@ -13,7 +13,10 @@ type UseWeatherResult = {
 };
 
 export const useWeather = (city: City | null): UseWeatherResult => {
-  const [data, setData] = useState<ForecastData | null>(null);
+  const [result, setResult] = useState<{
+    cityId: number;
+    data: ForecastData;
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
@@ -39,7 +42,8 @@ export const useWeather = (city: City | null): UseWeatherResult => {
         if (!response.ok) {
           throw new Error("Forecast request failed");
         }
-        setData((await response.json()) as ForecastData);
+        const data = (await response.json()) as ForecastData;
+        setResult({ cityId: city.id, data });
       } catch {
         if (!controller.signal.aborted) {
           setError(true);
@@ -57,8 +61,10 @@ export const useWeather = (city: City | null): UseWeatherResult => {
 
   const refetch = () => setReloadKey((key) => key + 1);
 
+  const data = city && result && result.cityId === city.id ? result.data : null;
+
   return {
-    data: city ? data : null,
+    data,
     isLoading: city ? isLoading : false,
     error: city ? error : false,
     refetch,

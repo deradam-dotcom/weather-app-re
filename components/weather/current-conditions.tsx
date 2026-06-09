@@ -1,6 +1,8 @@
+import { formatTemperature } from "@/lib/format";
+
 type CurrentConditionsProps = {
   cityName: string;
-  temperature: string;
+  temperature: number;
   condition: string;
   onCityClick?: () => void;
 };
@@ -21,7 +23,7 @@ export const CurrentConditions = ({
         {cityName}
       </button>
       <p className="mt-1 text-[48px] font-light text-fg">
-        {temperature} °C
+        {formatTemperature(temperature)}
       </p>
       <p className="mt-2 text-[16px] text-fg">{condition}</p>
     </section>

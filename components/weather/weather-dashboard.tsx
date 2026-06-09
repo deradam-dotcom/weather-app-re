@@ -7,8 +7,8 @@ import { useWeather } from "@/hooks/use-weather";
 import { getWeatherInfo } from "@/lib/weather-codes";
 import { useCityStore } from "@/store/use-city-store";
 
-import { Footer } from "./footer";
 import { CurrentConditions } from "./current-conditions";
+import { Footer } from "./footer";
 import { ForecastSection } from "./forecast-section";
 import {
   ChartSkeleton,
@@ -51,7 +51,7 @@ export const WeatherDashboard = () => {
             {view === "ready" && data && city && (
               <CurrentConditions
                 cityName={city.name}
-                temperature={String(Math.round(data.current.temperature))}
+                temperature={data.current.temperature}
                 condition={getWeatherInfo(data.current.weatherCode).label}
                 onCityClick={openSearch}
               />
