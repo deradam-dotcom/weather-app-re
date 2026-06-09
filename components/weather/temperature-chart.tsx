@@ -14,7 +14,7 @@ type TemperatureChartProps = {
 
 export function TemperatureChart({ data }: TemperatureChartProps) {
   return (
-    <div className="h-44 w-full rounded-[var(--radius-card)] border border-chart-border p-4 md:h-64">
+    <div className="h-44 w-full min-w-0 overflow-hidden rounded-[var(--radius-card)] border border-chart-border p-4 md:h-64">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
           <defs>

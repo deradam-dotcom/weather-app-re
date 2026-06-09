@@ -42,7 +42,7 @@ export function WeatherDashboard() {
             temperature="25"
             condition="Tiszta idő"
           />
-          <div className="flex flex-col gap-8">
+          <div className="flex min-w-0 flex-col gap-8">
             <ForecastList days={days} />
             <TemperatureChart data={placeholderChart} />
           </div>
