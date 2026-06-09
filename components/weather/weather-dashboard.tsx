@@ -7,7 +7,7 @@ import { useWeather } from "@/hooks/use-weather";
 import { getWeatherInfo } from "@/lib/weather-codes";
 import { useCityStore } from "@/store/use-city-store";
 
-import { ApplicantFooter } from "./applicant-footer";
+import { Footer } from "./footer";
 import { CurrentConditions } from "./current-conditions";
 import { ForecastSection } from "./forecast-section";
 import {
@@ -67,7 +67,7 @@ export const WeatherDashboard = () => {
             {view === "ready" && data && <ForecastSection daily={data.daily} />}
           </div>
         </div>
-        <ApplicantFooter name="Der Ádám" />
+        <Footer name="Der Ádám" />
       </div>
       <CitySearchDialog />
     </div>

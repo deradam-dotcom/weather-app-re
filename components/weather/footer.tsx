@@ -1,8 +1,8 @@
-type ApplicantFooterProps = {
+type FooterProps = {
   name: string;
 };
 
-export const ApplicantFooter = ({ name }: ApplicantFooterProps) => (
+export const Footer = ({ name }: FooterProps) => (
   <footer className="mt-10 text-center text-base text-fg md:text-left">
     {name}
   </footer>
