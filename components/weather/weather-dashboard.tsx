@@ -42,8 +42,8 @@ export const WeatherDashboard = () => {
 
   return (
     <div className="min-h-dvh bg-linear-to-b from-sky-from to-sky-to text-fg">
-      <div className="mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-8 py-12 md:px-10 md:py-16">
-        <div className="grid flex-1 grid-cols-1 gap-12 md:grid-cols-[1fr_1.3fr] md:gap-16">
+      <div className="mr-auto flex min-h-dvh w-fit flex-col px-8 pt-6 pb-0 md:mx-auto md:px-10 md:pt-16">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[auto_578px] md:gap-16">
           <div>
             {view === "loading" && <CurrentConditionsSkeleton />}
             {view === "empty" && <WeatherEmpty onChoose={openSearch} />}
@@ -57,7 +57,7 @@ export const WeatherDashboard = () => {
               />
             )}
           </div>
-          <div className="flex min-w-0 flex-col gap-8">
+          <div className="flex flex-col gap-8">
             {view === "loading" && (
               <>
                 <ForecastListSkeleton />
