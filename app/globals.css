@@ -12,9 +12,7 @@
 
   --color-sky-from: #7cb9e8;
   --color-sky-to: #a3d4fa;
-  --color-fg-strong: #ffffff;
   --color-fg: #ffffff;
-  --color-fg-muted: #ffffff;
   --radius-card: 22px;
 
   --color-ring: var(--ring);
@@ -29,9 +27,7 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
-  --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
 }
 

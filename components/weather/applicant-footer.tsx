@@ -3,7 +3,7 @@ type ApplicantFooterProps = {
 };
 
 export const ApplicantFooter = ({ name }: ApplicantFooterProps) => (
-  <footer className="mt-10 text-center text-base text-fg-muted md:text-left">
+  <footer className="mt-10 text-center text-base text-fg md:text-left">
     {name}
   </footer>
 );
