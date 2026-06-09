@@ -3,18 +3,13 @@
 import { useEffect } from "react";
 
 import { CitySearchDialog } from "@/components/city-search/city-search-dialog";
-import {
-  formatDayName,
-  formatPrecipitation,
-  formatTemperatureRange,
-} from "@/lib/format";
-import { getWeatherInfo } from "@/lib/weather-codes";
 import { useWeather } from "@/hooks/use-weather";
+import { getWeatherInfo } from "@/lib/weather-codes";
 import { useCityStore } from "@/store/use-city-store";
 
 import { ApplicantFooter } from "./applicant-footer";
 import { CurrentConditions } from "./current-conditions";
-import { ForecastList } from "./forecast-list";
+import { ForecastSection } from "./forecast-section";
 import {
   ChartSkeleton,
   CurrentConditionsSkeleton,
@@ -22,8 +17,6 @@ import {
   WeatherEmpty,
   WeatherError,
 } from "./states";
-import { TemperatureChart } from "./temperature-chart";
-import { WeatherIcon } from "./weather-icon";
 
 export const WeatherDashboard = () => {
   const city = useCityStore((state) => state.city);
@@ -46,21 +39,6 @@ export const WeatherDashboard = () => {
         : data
           ? "ready"
           : "loading";
-
-  const forecastRows =
-    data?.daily.map((day) => ({
-      key: day.date,
-      day: formatDayName(day.date),
-      icon: <WeatherIcon code={day.weatherCode} className="size-5" />,
-      precipitation: formatPrecipitation(day.precipitationProbability),
-      temperature: formatTemperatureRange(day.temperatureMin, day.temperatureMax),
-    })) ?? [];
-
-  const chartData =
-    data?.daily.map((day) => ({
-      label: day.date,
-      max: Math.round(day.temperatureMax),
-    })) ?? [];
 
   return (
     <div className="min-h-dvh bg-linear-to-b from-sky-from to-sky-to text-fg">
@@ -86,12 +64,7 @@ export const WeatherDashboard = () => {
                 <ChartSkeleton />
               </>
             )}
-            {view === "ready" && data && (
-              <>
-                <ForecastList days={forecastRows} />
-                <TemperatureChart data={chartData} />
-              </>
-            )}
+            {view === "ready" && data && <ForecastSection daily={data.daily} />}
           </div>
         </div>
         <ApplicantFooter name="Der Ádám" />
